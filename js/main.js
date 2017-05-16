@@ -1,9 +1,27 @@
-function validateForm(valor){
+function validateForm(){
 	 /*Escribe tú código aquí */
 	var datosForm=[];
 
 	var nombre = document.getElementById("name").value;
+	var alfab=/^[a-zA-Z]*$/;
+
+	if( nombre == null || nombre.length == 0){
+
+  		var miDiv = document.createElement("div");//crea id
+		miDiv.setAttribute("id", "error");//crea nombre id
+
+		var miSpan = document.createElement("span");//crea span
+		miSpan.innerHTML = "Campo Obligatorio";
+
+		var papa= document.getElementById("name").parentNode;//llama al elemento padre
+		papa.appendChild(miDiv);//le asigna div creado como hijo
+		miDiv.appendChild(miSpan);//le asigna span como hijo a div
+
+	} else if (alfab.test(nombre)){
+		datosForm.push(nombre)}
+	else {
 	datosForm.push(nombre);
+	}
 
 	var apellido = document.getElementById("lastname").value;
 	datosForm.push(apellido);
@@ -19,12 +37,44 @@ function validateForm(valor){
 	
 	console.log(datosForm);
 
-	datosForm.forEach(function(valor){
-		if (datosForm.length == 0){
-		var dato = document.createElement("span");
-		dato.innerHTML = "Debes escribir tu nombre";
-		document.getElementById("error").appendChild(dato);
+	datosForm.forEach(function(value){
+		
+		if (datosForm[1] == ""){
+		var miDiv = document.createElement("div");//crea id
+		miDiv.setAttribute("id", "error");//crea nombre id
+
+		var miSpan = document.createElement("span");//crea span
+		miSpan.innerHTML = "Debes ingresar un valor";
+
+		var papa= document.getElementById("lastname").parentNode;//llama al elemento padre
+		papa.appendChild(miDiv);//le asigna div creado como hijo
+		miDiv.appendChild(miSpan);//le asigna span como hijo a div
 		}
+
+		if (datosForm[2] == ""){
+		var miDiv = document.createElement("div");//crea id
+		miDiv.setAttribute("id", "error");//crea nombre id
+
+		var miSpan = document.createElement("span");//crea span
+		miSpan.innerHTML = "Debes ingresar un valor";
+
+		var papa= document.getElementById("input-email").parentNode;//llama al elemento padre
+		papa.appendChild(miDiv);//le asigna div creado como hijo
+		miDiv.appendChild(miSpan);//le asigna span como hijo a div
+		}
+
+		if (datosForm[3] == ""){
+		var miDiv = document.createElement("div");//crea id
+		miDiv.setAttribute("id", "error");//crea nombre id
+
+		var miSpan = document.createElement("span");//crea span
+		miSpan.innerHTML = "Debes ingresar un valor";
+
+		var papa= document.getElementById("input-password").parentNode;//llama al elemento padre
+		papa.appendChild(miDiv);//le asigna div creado como hijo
+		miDiv.appendChild(miSpan);//le asigna span como hijo a div
+		}
+
 	});
 }
 
