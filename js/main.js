@@ -1,36 +1,47 @@
-function validateForm(){
-	/* Escribe tú código aquí */
+function validateForm(valor){
+	 /*Escribe tú código aquí */
+	var datosForm=[];
+
 	var nombre = document.getElementById("name").value;
+	datosForm.push(nombre);
+
 	var apellido = document.getElementById("lastname").value;
+	datosForm.push(apellido);
+
 	var correo = document.getElementById("input-email").value;
+	datosForm.push(correo);
+
 	var pass = document.getElementById("input-password").value;
+	datosForm.push(pass);
+
 	var tipo = document.getElementsByTagName("select")[0].selectedIndex;
+	datosForm.push(tipo);
+	
+	console.log(datosForm);
 
-	if (nombre.length==0){
-		var msnNombre = document.createElement("span");
-		msnNombre.innerHTML = "Debes escribir tu nombre";
-		document.getElementById("errorNombre").appendChild(msnNombre);
-		return false;
-	}
-
-	if (apellido.length==0){
-		var msnApellido = document.createElement("span");
-		msnApellido.innerHTML = "Debes escribir tu apellido";
-		document.getElementById("errorApellido").appendChild(msnApellido);
-		return false;
-	}
-
-	if (correo.length==0){
-		var msnCorreo = document.createElement("span");
-		msnCorreo.innerHTML = "Debes escribir tu nombre";
-		document.getElementById("errorCorreo").appendChild(msnCorreo);
-		return false;
-	}
-
-	if (pass.length==0){
-		var msnPass = document.createElement("span");
-		msnPass.innerHTML = "Debes escribir tu nombre";
-		document.getElementById("errorPass").appendChild(msnPass);
-		return false;
-	}
+	datosForm.forEach(function(valor){
+		if (datosForm.length == 0){
+		var dato = document.createElement("span");
+		dato.innerHTML = "Debes escribir tu nombre";
+		document.getElementById("error").appendChild(dato);
+		}
+	});
 }
+
+/*function validarFormulario(evObject) {
+evObject.preventDefault();
+	var todoCorrecto = true;
+	var formulario = document.form;
+
+		for (var i=0; i<formulario.length; i++) {        
+        	if(formulario[i].type =='text') {
+                if (formulario[i].value == null || 
+                	formulario[i].value.length == 0 || /^\s*$/.test(formulario[i].value)){
+                    alert (formulario[i].name+ ' no puede estar vacío o contener sólo espacios en blanco');
+                               todoCorrecto=false;
+                }
+            }
+        }
+if (todoCorrecto ==true) {formulario.submit();}
+}
+*/
