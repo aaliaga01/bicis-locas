@@ -3,9 +3,8 @@ function validateForm(){
 	var datosForm=[];
 
 	var nombre = document.getElementById("name").value;
-	var alfab=/^[a-zA-Z]*$/;
 
-	if( nombre == null || nombre.length == 0){
+	if( nombre == null || nombre.length == 0 || /^\s+$/.test(nombre)){
 
   		var miDiv = document.createElement("div");//crea id
 		miDiv.setAttribute("id", "error");//crea nombre id
@@ -16,9 +15,8 @@ function validateForm(){
 		var papa= document.getElementById("name").parentNode;//llama al elemento padre
 		papa.appendChild(miDiv);//le asigna div creado como hijo
 		miDiv.appendChild(miSpan);//le asigna span como hijo a div
-
-	} else if (alfab.test(nombre)){
-		datosForm.push(nombre)}
+		return false;
+	}
 	else {
 	datosForm.push(nombre);
 	}
